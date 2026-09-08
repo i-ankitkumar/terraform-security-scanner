@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tfscan"
+version = "0.1.0"
+description = "Static security scanner for Terraform, with optional AI-generated remediation guidance."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Ankit Kumar" }]
+dependencies = [
+    "python-hcl2>=4.3,<5",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+ai = ["anthropic>=0.30"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+tfscan = "tfscan.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["tfscan*"]
